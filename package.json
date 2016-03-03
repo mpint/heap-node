@@ -1,0 +1,55 @@
+{
+  "name": "heap-api",
+  "version": "0.1.0",
+  "description": "Heap Server-Side API Client",
+  "keywords": ["heap", "api", "client", "analytics"],
+  "homepage": "https://github.com/heap/heap-node",
+  "author": "Victor Costan <victor@costan.us> (http://www.costan.us)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heap/heap-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/heap/heap-node/issues"
+  },
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "dependencies": {
+    "any-promise": ">= 0",
+    "request": ">= 0"
+  },
+  "devDependencies": {
+    "chai": ">= 3.4.1",
+    "chai-as-promised": ">= 5.2.0",
+    "coveralls": ">= 2.11.8",
+    "es6-promise": ">= 3.1.2",
+    "ink-docstrap": ">= 1.1.4",
+    "istanbul": ">= 0.4.2",
+    "jsdoc": ">= 3.4.0",
+    "mocha": ">= 2.4.5",
+    "mocha-lcov-reporter": ">= 1.2.0",
+    "nock": ">= 7.4.0",
+    "sinon": ">= 1.17.2",
+    "sinon-chai": ">= 2.8.0",
+    "watch": ">= 0.16.0"
+  },
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "cov": "node node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha",
+    "coveralls": "node node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha && cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js",
+    "doc": "node node_modules/.bin/jsdoc -c jsdoc.json",
+    "test": "node node_modules/mocha/bin/mocha"
+  },
+  "config": {
+    "blanket": {
+      "pattern": [""],
+      "data-cover-never": ["node_modules", "test"]
+    }
+  }
+}
