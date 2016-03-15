@@ -21,7 +21,7 @@
     "request": ">= 0"
   },
   "devDependencies": {
-    "chai": ">= 3.4.1",
+    "chai": ">= 3.5.0",
     "chai-as-promised": ">= 5.2.0",
     "coveralls": ">= 2.11.8",
     "es6-promise": ">= 3.1.2",
@@ -31,7 +31,7 @@
     "mocha": ">= 2.4.5",
     "mocha-lcov-reporter": ">= 1.2.0",
     "nock": ">= 7.4.0",
-    "sinon": ">= 1.17.2",
+    "sinon": ">= 1.17.3",
     "sinon-chai": ">= 2.8.0",
     "watch": ">= 0.16.0"
   },
@@ -42,7 +42,7 @@
   },
   "scripts": {
     "cov": "node node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha",
-    "coveralls": "node node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha && cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js",
+    "coveralls": "node node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha --report lcovonly && cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js",
     "doc": "node node_modules/.bin/jsdoc -c jsdoc.json",
     "test": "node node_modules/mocha/bin/mocha"
   },
