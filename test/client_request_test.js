@@ -5,7 +5,7 @@ describe("heap.Client#_request", function() {
   beforeEach(function() {
     this.client = heap("test-app-id");
     this.requestOptions = {
-      url: "https://heapanalytics.com/api/identify",
+      url: "https://heapanalytics.com/api/add_user_properties",
       json: {
         app_id: "test-app-id",
         identity: "test-identity",
@@ -30,7 +30,8 @@ describe("heap.Client#_request", function() {
     });
 
     it("encodes the JSON payload correctly", function() {
-      this.nock.post("/api/identify").reply(204, function(uri, requestBody) {
+      this.nock.post("/api/add_user_properties").reply(204,
+          function(uri, requestBody) {
         expect(this.req.headers["content-type"]).to.equal("application/json");
         expect(requestBody).to.deep.equal({
           app_id: "test-app-id", identity: "test-identity",
@@ -43,7 +44,8 @@ describe("heap.Client#_request", function() {
 
     it("sets the user-agent string correctly", function() {
       this.client.userAgent = "test/user/agent";
-      this.nock.post("/api/identify").reply(204, function(uri, requestBody) {
+      this.nock.post("/api/add_user_properties").reply(204,
+          function(uri, requestBody) {
         expect(this.req.headers["user-agent"]).to.equal("test/user/agent");
       });
 
@@ -52,7 +54,7 @@ describe("heap.Client#_request", function() {
     });
 
     it("calls the callback if the API call succeeds", function(done) {
-      this.nock.post("/api/identify").reply(204, function() {});
+      this.nock.post("/api/add_user_properties").reply(204, function() {});
       this.client._request(this.requestOptions, function(error) {
         expect(error).to.be.undefined;
         done();
@@ -60,7 +62,7 @@ describe("heap.Client#_request", function() {
     });
 
     it("reports server errors to callback", function(done) {
-      this.nock.post("/api/identify").reply(400, "Bad request");
+      this.nock.post("/api/add_user_properties").reply(400, "Bad request");
 
       this.client._request(this.requestOptions, function(error) {
         expect(error).to.be.an.instanceOf(heap.ApiError);
@@ -71,7 +73,8 @@ describe("heap.Client#_request", function() {
     });
 
     it("reports request errors to callback", function(done) {
-      this.nock.post("/api/identify").replyWithError("Mock request error");
+      this.nock.post("/api/add_user_properties").
+          replyWithError("Mock request error");
 
       this.client._request(this.requestOptions, function(error) {
         expect(error).to.be.an.instanceOf(Error);
@@ -91,7 +94,7 @@ describe("heap.Client#_request", function() {
     });
 
     it("rejects the returned promise on server errors", function() {
-      this.nock.post("/api/identify").reply(400, "Bad request");
+      this.nock.post("/api/add_user_properties").reply(400, "Bad request");
 
       return expect(this.client._request(this.requestOptions)).to.be.
           rejectedWith(heap.ApiError,
@@ -99,7 +102,8 @@ describe("heap.Client#_request", function() {
     });
 
     it("rejects the returned promise on request errors", function() {
-      this.nock.post("/api/identify").replyWithError("Mock request error");
+      this.nock.post("/api/add_user_properties").
+          replyWithError("Mock request error");
 
       return expect(this.client._request(this.requestOptions)).to.eventually.
         be.rejectedWith(Error, /^Error: Mock request error$/);
@@ -115,7 +119,7 @@ describe("heap.Client#_request", function() {
     });
 
     it("issues events for server errors", function(done) {
-      this.nock.post("/api/identify").reply(400, "Bad request");
+      this.nock.post("/api/add_user_properties").reply(400, "Bad request");
 
       var client = this.client;
       client.on("error", function(error) {
@@ -131,7 +135,8 @@ describe("heap.Client#_request", function() {
     });
 
     it("issues events for request errors", function(done) {
-      this.nock.post("/api/identify").replyWithError("Mock request error");
+      this.nock.post("/api/add_user_properties").
+          replyWithError("Mock request error");
 
       var client = this.client;
       client.on("error", function(error) {
@@ -155,7 +160,7 @@ describe("heap.Client#_request", function() {
     });
 
     it("calls the callback before the promise is resolved", function(done) {
-      this.nock.post("/api/identify").reply(204, function() {});
+      this.nock.post("/api/add_user_properties").reply(204, function() {});
 
       var promiseResolved = false;
       var callbackCalled = false;
@@ -173,7 +178,7 @@ describe("heap.Client#_request", function() {
     });
 
     it("calls the callback before the promise is rejected", function(done) {
-      this.nock.post("/api/identify").reply(400, "Bad request");
+      this.nock.post("/api/add_user_properties").reply(400, "Bad request");
 
       var promiseRejected = false;
       var callbackCalled = false;
@@ -217,7 +222,7 @@ describe("heap.Client#_request", function() {
     });
 
     it("issues the error event before calling the callback", function(done) {
-      this.nock.post("/api/identify").reply(400, "Bad request");
+      this.nock.post("/api/add_user_properties").reply(400, "Bad request");
 
       var eventIssued = false;
       var callbackCalled = false;

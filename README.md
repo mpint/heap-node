@@ -43,8 +43,8 @@ heap.track('event-name', 'user-identity');
 heap.track('event-name', 'user-identity', { property: 'value' });
 ```
 
-[Add properties](https://heapanalytics.com/docs/server-side#identify) to a
-user. Take advantage of the returned
+[Add properties](https://heapanalytics.com/docs/server-side#add-user-properties)
+to a user. Take advantage of the returned
 [ES6 Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 to do more work when the call completes.
 

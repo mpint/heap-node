@@ -38,7 +38,8 @@ describe("heap.Client#addUserProperties", function() {
     });
 
     it("works with string identities", function() {
-      this.nock.post("/api/identify").reply(204, function(uri, requestBody) {
+      this.nock.post("/api/add_user_properties").reply(204,
+          function(uri, requestBody) {
         expect(requestBody).to.deep.equal({
           app_id: "test-app-id", identity: "test-identity",
           properties: { foo: "bar" },
@@ -50,7 +51,8 @@ describe("heap.Client#addUserProperties", function() {
     });
 
     it("works with integer identities", function() {
-      this.nock.post("/api/identify").reply(204, function(uri, requestBody) {
+      this.nock.post("/api/add_user_properties").reply(204,
+          function(uri, requestBody) {
         expect(requestBody).to.deep.equal({
           app_id: "test-app-id", identity: "123456789",
           properties: { foo: "bar" },
@@ -62,7 +64,8 @@ describe("heap.Client#addUserProperties", function() {
     });
 
     it("works with a callback", function(done) {
-      this.nock.post("/api/identify").reply(204, function(uri, requestBody) {
+      this.nock.post("/api/add_user_properties").reply(204,
+          function(uri, requestBody) {
         expect(requestBody).to.deep.equal({
           app_id: "test-app-id", identity: "test-identity",
           properties: { foo: "bar" },
