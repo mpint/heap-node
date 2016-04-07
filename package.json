@@ -1,6 +1,6 @@
 {
   "name": "heap-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Heap Server-Side API Client",
   "keywords": ["heap", "api", "client", "analytics"],
   "homepage": "https://github.com/heap/heap-node",
