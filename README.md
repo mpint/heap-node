@@ -124,13 +124,18 @@ configured to use your application's favorite Promise implementation. The
 node.js 0.12 and above include a native Promise implementation that is used by
 default.
 
+For example, the snippet below configures `any-promise` to use
+[when.js](https://github.com/cujojs/when).
+
 ```javascript
 require('any-promise/register')('when');
 ```
 
-On node.js 0.10 and below, you must either explicitly configure a Promise
-library, or install a polyfill such as
-[es6-promises](https://www.npmjs.com/package/es6-promises), as shown below.
+#### Node.js 0.10
+
+On node.js 0.10 and below, you must either explicitly configure `any-promise`
+as shown above, or install a polyfill such as
+[es6-promises](https://www.npmjs.com/package/es6-promises).
 
 ```javascript
 require('es6-promises').polyfill();
