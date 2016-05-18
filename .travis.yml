@@ -21,6 +21,9 @@ matrix:
     - node_js: "4.3"
     - node_js: "4.4"
     - node_js: "5"
+    - node_js: "6.0"
+    - node_js: "6.1"
+    - node_js: "6.2"
     - node_js: "4.4"
       script: npm run coveralls
     - node_js: "4.4"
