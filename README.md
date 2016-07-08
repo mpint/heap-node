@@ -111,7 +111,7 @@ fails.
 heap.addUserProperties('user-identity', { plan: 'premium1' })
 .then(function() {
   console.log("API call succeeded");
-});
+})
 .catch(function(error) {
   console.error(error);
 });
